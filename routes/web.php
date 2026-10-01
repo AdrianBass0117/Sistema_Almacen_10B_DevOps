@@ -1,13 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RegistroController;
+use Illuminate\Support\Facades\Route;
 
-// Página principal
-Route::get('/', function () {
-    return redirect()->route('productos.index');
-});
+// Página de bienvenida
+Route::view('/', 'inicio')->name('inicio');
 
 // CRUD de productos
 Route::resource('productos', ProductoController::class);

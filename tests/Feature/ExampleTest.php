@@ -14,6 +14,9 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertRedirectToRoute('productos.index');
+        $response->assertOk();
+        $response->assertSee('Bienvenido al Sistema de Almacén');
+        $response->assertSee(route('productos.index'));
+        $response->assertSee(route('registros.index'));
     }
 }

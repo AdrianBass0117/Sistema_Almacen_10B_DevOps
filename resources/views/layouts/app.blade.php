@@ -13,9 +13,12 @@
 <body class="bg-appleGray text-appleBlack font-sans">
         <header class="navbar">
             <div class="navbar-left">
-                <h1 class="navbar-title">📦 Sistema Almacén</h1>
+                <a href="{{ route('inicio') }}" class="navbar-brand">
+                    <h1 class="navbar-title">📦 Sistema Almacén</h1>
+                </a>
             </div>
             <nav class="navbar-right">
+                <a href="{{ route('inicio') }}" class="navbar-link">Inicio</a>
                 <a href="{{ route('productos.index') }}" class="navbar-link">📱 Productos</a>
                 <a href="{{ route('registros.index') }}" class="navbar-link">📝 Registros</a>
             </nav>

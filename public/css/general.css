@@ -29,6 +29,11 @@ body {
     margin: 0;
 }
 
+.navbar-brand {
+    color: inherit;
+    text-decoration: none;
+}
+
 .navbar-right {
     display: flex;
     gap: 1.5rem;
@@ -75,4 +80,134 @@ body {
 
 .toast.info {
     background-color: #2980b9; /* azul para info */
+}
+
+.inicio-container {
+    max-width: 1050px;
+    margin: 2.5rem auto;
+}
+
+.inicio-hero {
+    max-width: 720px;
+    margin-bottom: 2rem;
+}
+
+.inicio-etiqueta {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    color: #8fb8e8;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.inicio-hero h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.12;
+}
+
+.inicio-hero p {
+    max-width: 650px;
+    margin: 1rem 0 0;
+    color: #c5d0db;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.inicio-opciones {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.inicio-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 145px;
+    padding: 1.4rem;
+    border: 1px solid #3b526a;
+    border-radius: 16px;
+    background: #26394d;
+    color: var(--texto-claro);
+    text-decoration: none;
+    transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.inicio-card:hover,
+.inicio-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: #6fa8e8;
+    background: #2b4259;
+}
+
+.inicio-card:focus-visible {
+    outline: 2px solid #8fb8e8;
+    outline-offset: 3px;
+}
+
+.inicio-card-icono {
+    display: grid;
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    border-radius: 14px;
+    background: #344e69;
+    font-size: 1.65rem;
+}
+
+.inicio-card-contenido {
+    display: grid;
+    flex: 1;
+    gap: 0.45rem;
+}
+
+.inicio-card-contenido strong {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.inicio-card-contenido span {
+    color: #c5d0db;
+    line-height: 1.5;
+}
+
+.inicio-card-flecha {
+    color: #8fb8e8;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .navbar-right {
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .navbar-link {
+        padding: 0.5rem 0.65rem;
+    }
+
+    .inicio-container {
+        margin: 1rem auto;
+    }
+
+    .inicio-opciones {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio-card {
+        min-height: 120px;
+        padding: 1rem;
+    }
 }
