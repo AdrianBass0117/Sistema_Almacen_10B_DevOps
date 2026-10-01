@@ -68,6 +68,83 @@ body {
     font-size: 0.78rem;
 }
 
+.registros-filtros {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 1.15rem;
+    border: 1px solid #3c5269;
+    border-radius: 12px;
+    background: #26394d;
+}
+
+.filtro-campo {
+    display: grid;
+    flex: 1 1 150px;
+    gap: 0.45rem;
+}
+
+.filtro-producto {
+    flex-basis: 210px;
+}
+
+.filtro-campo label {
+    color: #d6e0e9;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.filtro-campo input,
+.filtro-campo select {
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #60758a;
+    border-radius: 7px;
+    background: #1e2a38;
+    color: #ecf0f1;
+    font: inherit;
+}
+
+.filtro-campo input:focus,
+.filtro-campo select:focus {
+    outline: 2px solid #8fb8e8;
+    outline-offset: 2px;
+}
+
+.filtros-acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 42px;
+}
+
+.filtro-aplicar {
+    min-height: 42px;
+    padding: 0.6rem 1rem;
+    border: 0;
+    border-radius: 7px;
+    background: #4a90e2;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filtro-aplicar:hover {
+    background: #377bc9;
+}
+
+.filtro-limpiar {
+    color: #c8d7e5;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .table-wrapper {
     overflow-x: auto;
     background-color: var(--card-bg);
@@ -247,5 +324,19 @@ body {
     .registros-count {
         min-width: 82px;
         padding: 0.65rem;
+    }
+
+    .registros-filtros {
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    .filtro-campo,
+    .filtro-producto {
+        flex-basis: 100%;
+    }
+
+    .filtros-acciones {
+        justify-content: space-between;
     }
 }
