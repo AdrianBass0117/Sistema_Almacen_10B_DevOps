@@ -14,9 +14,49 @@
         </div>
         <div class="registros-count">
             <span class="registros-count-value">{{ $registros->total() }}</span>
-            <span class="registros-count-label">movimientos</span>
+            <span class="registros-count-label">movimientos encontrados</span>
         </div>
     </div>
+
+    <form action="{{ route('registros.index') }}" method="GET" class="registros-filtros">
+        <div class="filtro-campo filtro-producto">
+            <label for="filtro-producto">Producto</label>
+            <input
+                type="search"
+                id="filtro-producto"
+                name="producto"
+                value="{{ $filters['producto'] ?? '' }}"
+                maxlength="255"
+                placeholder="Buscar por nombre"
+            >
+        </div>
+
+        <div class="filtro-campo">
+            <label for="filtro-operacion">Tipo de movimiento</label>
+            <select id="filtro-operacion" name="operacion">
+                <option value="">Todos los movimientos</option>
+                <option value="AGREGAR" @selected(($filters['operacion'] ?? '') === 'AGREGAR')>Entrada</option>
+                <option value="RESTAR" @selected(($filters['operacion'] ?? '') === 'RESTAR')>Salida</option>
+                <option value="ACTUALIZAR_PRECIO" @selected(($filters['operacion'] ?? '') === 'ACTUALIZAR_PRECIO')>Cambio de precio</option>
+                <option value="BORRAR_PRODUCTO" @selected(($filters['operacion'] ?? '') === 'BORRAR_PRODUCTO')>Producto eliminado</option>
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label for="filtro-fecha-desde">Desde</label>
+            <input type="date" id="filtro-fecha-desde" name="fecha_desde" value="{{ $filters['fecha_desde'] ?? '' }}">
+        </div>
+
+        <div class="filtro-campo">
+            <label for="filtro-fecha-hasta">Hasta</label>
+            <input type="date" id="filtro-fecha-hasta" name="fecha_hasta" value="{{ $filters['fecha_hasta'] ?? '' }}">
+        </div>
+
+        <div class="filtros-acciones">
+            <button type="submit" class="filtro-aplicar">Aplicar filtros</button>
+            <a href="{{ route('registros.index') }}" class="filtro-limpiar">Limpiar</a>
+        </div>
+    </form>
 
     <div class="table-wrapper">
         <table class="registros-table">
@@ -83,7 +123,13 @@
                             <div class="registros-vacio">
                                 <span class="registros-vacio-icono" aria-hidden="true">📋</span>
                                 <strong>No hay movimientos registrados</strong>
-                                <span>Los cambios realizados en los productos aparecerán aquí.</span>
+                                <span>
+                                    @if($hasActiveFilters)
+                                        No hay movimientos que coincidan con los filtros seleccionados.
+                                    @else
+                                        Los cambios realizados en los productos aparecerán aquí.
+                                    @endif
+                                </span>
                             </div>
                         </td>
                     </tr>
