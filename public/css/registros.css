@@ -2,9 +2,7 @@
     --fondo-oscuro: #1e2a38;
     --card-bg: #2c3e50;
     --texto-claro: #ecf0f1;
-    --azul: #4a90e2;
-    --gris: #95a5a6;
-    --sombra: 0 2px 6px rgba(0,0,0,0.2);
+    --sombra: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -21,10 +19,53 @@ body {
     padding: 2rem;
 }
 
-.registros-title {
-    font-size: 2rem;
-    font-weight: 700;
+.registros-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
+}
+
+.registros-eyebrow {
+    margin: 0 0 0.4rem;
+    color: #8fb8e8;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.registros-title {
+    margin: 0;
+    font-size: clamp(1.65rem, 4vw, 2.2rem);
+    font-weight: 700;
+}
+
+.registros-description {
+    margin: 0.55rem 0 0;
+    color: #bdc9d5;
+}
+
+.registros-count {
+    display: grid;
+    min-width: 110px;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid #496079;
+    border-radius: 12px;
+    background: #26394d;
+    text-align: center;
+}
+
+.registros-count-value {
+    color: #fff;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.registros-count-label {
+    color: #bdc9d5;
+    font-size: 0.78rem;
 }
 
 .table-wrapper {
@@ -32,24 +73,179 @@ body {
     background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: var(--sombra);
+    scrollbar-color: #667b91 #2c3e50;
 }
 
 .registros-table {
     width: 100%;
+    min-width: 760px;
     border-collapse: collapse;
     color: var(--texto-claro);
 }
 
 .registros-table th,
 .registros-table td {
-    padding: 1rem;
+    padding: 1rem 1.15rem;
     border-bottom: 1px solid #34495e;
     text-align: left;
     font-size: 0.95rem;
+    vertical-align: middle;
 }
 
 .registros-table th {
     background-color: #3b4c5e;
     font-weight: 600;
+    white-space: nowrap;
 }
 
+.registros-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.registros-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.035);
+}
+
+.operacion-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.operacion-indicador {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.operacion-entrada {
+    color: #8ee0ae;
+    border-color: rgba(88, 190, 127, 0.35);
+    background: rgba(45, 143, 84, 0.18);
+}
+
+.operacion-salida {
+    color: #ffbc86;
+    border-color: rgba(224, 139, 78, 0.35);
+    background: rgba(184, 96, 43, 0.18);
+}
+
+.operacion-precio {
+    color: #9cc8ff;
+    border-color: rgba(93, 155, 226, 0.35);
+    background: rgba(62, 119, 187, 0.18);
+}
+
+.operacion-eliminado {
+    color: #ff9b9b;
+    border-color: rgba(220, 91, 91, 0.35);
+    background: rgba(176, 61, 61, 0.18);
+}
+
+.operacion-otro {
+    color: #d3c5ff;
+    border-color: rgba(161, 137, 221, 0.35);
+    background: rgba(119, 91, 181, 0.18);
+}
+
+.registro-id {
+    display: block;
+    margin-top: 0.4rem;
+    color: #aebdca;
+    font-size: 0.75rem;
+}
+
+.producto-registro {
+    min-width: 150px;
+    font-weight: 600;
+}
+
+.cambio-valor {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    white-space: nowrap;
+}
+
+.cambio-valor > span:first-child {
+    color: #b7c3cf;
+}
+
+.cambio-valor strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.cambio-flecha {
+    color: #8fa5ba;
+}
+
+.cambio-indicador {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-size: 0.73rem;
+    font-weight: 600;
+}
+
+.cambio-aumento {
+    color: #8ee0ae;
+}
+
+.cambio-disminucion {
+    color: #ffbc86;
+}
+
+.fecha-registro {
+    color: #c3cfda;
+    white-space: nowrap;
+}
+
+.registros-vacio {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    padding: 3rem 1rem;
+    color: #c3cfda;
+    text-align: center;
+}
+
+.registros-vacio strong {
+    color: #fff;
+    font-size: 1.05rem;
+}
+
+.registros-vacio-icono {
+    margin-bottom: 0.3rem;
+    font-size: 2rem;
+}
+
+.registros-paginacion {
+    margin-top: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .registros-container {
+        padding: 1rem;
+    }
+
+    .registros-header {
+        align-items: flex-start;
+    }
+
+    .registros-description {
+        max-width: 34ch;
+        line-height: 1.5;
+    }
+
+    .registros-count {
+        min-width: 82px;
+        padding: 0.65rem;
+    }
+}
