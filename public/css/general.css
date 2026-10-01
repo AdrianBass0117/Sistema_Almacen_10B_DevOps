@@ -1,0 +1,78 @@
+:root {
+    --fondo-oscuro: #1e2a38;
+    --fondo-navbar: #263445;
+    --texto-claro: #ecf0f1;
+    --azul-activo: #4a90e2;
+    --hover: #3b5870;
+}
+
+body {
+    background-color: var(--fondo-oscuro);
+    color: var(--texto-claro);
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Inter", sans-serif;
+}
+
+.navbar {
+    background-color: var(--fondo-navbar);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--texto-claro);
+    margin: 0;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-link {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-link:hover {
+    background-color: var(--hover);
+    color: var(--azul-activo);
+}
+
+.toast {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--azul);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 999999; /* 🔥 capa más alta */
+    opacity: 1;
+    transition: opacity 1s ease;
+    font-weight: 500;
+    pointer-events: none; /* evita bloquear clics en otros elementos */
+}
+
+.toast.error {
+    background-color: #e74c3c; /* rojo para errores */
+}
+
+.toast.success {
+    background-color: #27ae60; /* verde para éxito */
+}
+
+.toast.info {
+    background-color: #2980b9; /* azul para info */
+}
