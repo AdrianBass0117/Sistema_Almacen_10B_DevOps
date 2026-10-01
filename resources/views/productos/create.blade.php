@@ -12,13 +12,22 @@
         @csrf
 
         <label for="nombre">📛 Nombre</label>
-        <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}" required>
+        <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}" maxlength="255" required>
+        @error('nombre')
+            <div class="toast error">{{ $message }}</div>
+        @enderror
 
         <label for="precio">💰 Precio</label>
-        <input type="number" step="0.01" name="precio" id="precio" value="{{ old('precio') }}" required>
+        <input type="number" step="0.01" min="0.01" name="precio" id="precio" value="{{ old('precio') }}" required>
+        @error('precio')
+            <div class="toast error">{{ $message }}</div>
+        @enderror
 
         <label for="cantidad">📦 Cantidad</label>
-        <input type="number" name="cantidad" id="cantidad" value="{{ old('cantidad') }}" required>
+        <input type="number" min="1" step="1" name="cantidad" id="cantidad" value="{{ old('cantidad') }}" required>
+        @error('cantidad')
+            <div class="toast error">{{ $message }}</div>
+        @enderror
 
         <label for="imagen">🖼 Imagen (opcional)</label>
         <input type="file" name="imagen" id="imagen" accept="image/*">
