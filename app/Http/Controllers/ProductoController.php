@@ -22,9 +22,9 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|numeric|min:0',
-            'cantidad' => 'required|integer|min:0',
+            'nombre' => ['required', 'string', 'max:255', 'not_regex:/<[^>]*>/'],
+            'precio' => ['required', 'numeric', 'decimal:0,2', 'gt:0'],
+            'cantidad' => ['required', 'integer', 'min:1'],
             'imagen' => 'nullable|image|max:5120', // validación de imagen
         ]);
 
@@ -55,9 +55,9 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $validated = $request->validate([
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|numeric|min:0',
-            'cantidad' => 'required|integer|min:0',
+            'nombre' => ['required', 'string', 'max:255', 'not_regex:/<[^>]*>/'],
+            'precio' => ['required', 'numeric', 'decimal:0,2', 'gt:0'],
+            'cantidad' => ['required', 'integer', 'min:1'],
             'imagen' => 'nullable|image|max:5120', // validación de imagen
         ]);
 
