@@ -1,0 +1,50 @@
+
+name: Laravel CI - Sistema Almacen
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruebas:
+    name: Compilacion y pruebas Laravel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, pdo_sqlite, sqlite3, fileinfo
+          coverage: none
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Instalar dependencias PHP
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Instalar dependencias JavaScript
+        run: npm ci
+
+      - name: Preparar Laravel
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          php artisan config:clear
+
+      - name: Compilar recursos con Vite
+        run: npm run build
+
+      - name: Ejecutar pruebas PHPUnit
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+        run: composer test
