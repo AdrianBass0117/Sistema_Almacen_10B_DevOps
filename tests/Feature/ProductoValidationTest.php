@@ -19,9 +19,7 @@ class ProductoValidationTest extends TestCase
             'cantidad' => '1',
         ]);
 
-        // FALLO INTENCIONAL: se espera 404 en lugar de la redirección correcta.
-        $response->assertStatus(404);
-
+        $response->assertRedirect(route('productos.index'));
         $this->assertDatabaseHas('productos', [
             'nombre' => 'Producto válido',
             'precio' => '0.01',
